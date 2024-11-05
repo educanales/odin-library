@@ -7,23 +7,27 @@ const addBtn = document.querySelector(".add-btn");
 function showBook() {
   myLibrary.forEach((book) => {
     const card = document.createElement("div");
+    const textContainer = document.createElement("div");
+    textContainer.classList.add("text-container")
     const bookTitle = document.createElement("h3");
     const bookAuthor = document.createElement("p");
     const bookPages = document.createElement("p");
     const bookStatus = document.createElement("p");
-    const btnContainer = document.createElement("div")
-    const statusBtn = document.createElement("button")
-    const deleteBtn = document.createElement("button")
+    const btnContainer = document.createElement("div");
+    btnContainer.classList.add("btn-container");
+    const statusBtn = document.createElement("button");
+    const deleteBtn = document.createElement("button");
 
     bookContainer.appendChild(card);
-    card.append(bookTitle, bookAuthor, bookPages, bookStatus, btnContainer);
+    card.append(textContainer, btnContainer);
+    textContainer.append(bookTitle, bookAuthor, bookPages, bookStatus);
     btnContainer.append(statusBtn, deleteBtn);
     bookTitle.textContent = `Title: ${book.title}`;
     bookAuthor.textContent = `Author: ${book.author}`;
     bookPages.textContent = `Pages: ${book.pages}`;
     bookStatus.textContent = `Status: ${book.status}`;
-    statusBtn.textContent = "Change status"
-    deleteBtn.textContent = "Delete"
+    statusBtn.textContent = "Change status";
+    deleteBtn.textContent = "Delete";
   });
 }
 
