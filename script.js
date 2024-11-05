@@ -11,13 +11,19 @@ function showBook() {
     const bookAuthor = document.createElement("p");
     const bookPages = document.createElement("p");
     const bookStatus = document.createElement("p");
+    const btnContainer = document.createElement("div")
+    const statusBtn = document.createElement("button")
+    const deleteBtn = document.createElement("button")
 
     bookContainer.appendChild(card);
-    card.append(bookTitle, bookAuthor, bookPages, bookStatus);
+    card.append(bookTitle, bookAuthor, bookPages, bookStatus, btnContainer);
+    btnContainer.append(statusBtn, deleteBtn);
     bookTitle.textContent = `Title: ${book.title}`;
     bookAuthor.textContent = `Author: ${book.author}`;
     bookPages.textContent = `Pages: ${book.pages}`;
     bookStatus.textContent = `Status: ${book.status}`;
+    statusBtn.textContent = "Change status"
+    deleteBtn.textContent = "Delete"
   });
 }
 
