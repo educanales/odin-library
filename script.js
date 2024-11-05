@@ -1,7 +1,7 @@
 const newBook = new Book("Game of Thrones", "George R.R. Martin", 800, "Read");
 const harry = new Book("Harry Potter", "JK Rowling", 350, "Read");
 const myLibrary = [newBook, harry];
-const main = document.querySelector("main");
+const bookContainer = document.querySelector(".book-container");
 const addBtn = document.querySelector(".add-btn");
 
 function showBook() {
@@ -12,7 +12,7 @@ function showBook() {
     const bookPages = document.createElement("p");
     const bookStatus = document.createElement("p");
 
-    main.appendChild(card);
+    bookContainer.appendChild(card);
     card.append(bookTitle, bookAuthor, bookPages, bookStatus);
     bookTitle.textContent = `Title: ${book.title}`;
     bookAuthor.textContent = `Author: ${book.author}`;
