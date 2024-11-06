@@ -46,6 +46,14 @@ body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
+button {
+  border: none;
+  border-radius: 5px;
+  padding: 0.5rem 1rem;
+  background-color: lightcoral;
+  color: white;
+}
+
 /* Header */
 
 header  {
@@ -63,10 +71,11 @@ main {
 
 .book-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
   grid-template-rows: minmax(250px, 1fr);
   grid-auto-rows: minmax(250px, 1fr);
   gap: 1rem;
+  /* margin: 0 auto; */
 }
 
 .book-container > div {
@@ -89,4 +98,43 @@ main {
   display: flex;
   justify-content: center;
   gap: 1rem;
+}
+
+/* Dialog */
+
+dialog {
+  border-radius: 15px;
+  margin: 3rem auto;
+  padding: 2rem;
+  border: 1px solid salmon;
+}
+
+.dialog-title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+dialog > form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1rem;
+  /* align-items: center; */
+  /* width: 300px */
+}
+
+.form-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.form-row.checkbox,
+.form-row.btn {  
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.form-row > button {
+  width: 150px;
 }
