@@ -1,6 +1,7 @@
-const newBook = new Book("Game of Thrones", "George R.R. Martin", 800, "Read");
+const got = new Book("Game of Thrones", "George R.R. Martin", 800, "Read");
 const harry = new Book("Harry Potter", "JK Rowling", 350, "Read");
-const myLibrary = [newBook, harry];
+const myLibrary = [got, harry];
+
 const bookContainer = document.querySelector(".book-container");
 const addBtn = document.querySelector(".add-btn");
 
@@ -38,15 +39,11 @@ function Book(title, author, pages, status) {
   this.status = status;
 }
 
-// addBtn.addEventListener("click", showBook);
-showBook()
+function addBookToLibrary(title, author, pages, status) {
+  const newBook = new Book(title, author, pages, status);
+  myLibrary.push(newBook);
+}
 
-function addBookToLibrary() {}
+addBookToLibrary("El tunel", "Ernesto Sabato", 158, "Unread");
 
-/*
-- Modificar DOM para mostrar myLibrary
-  - Seleccionar el div
-  - 
-
-
-*/
+showBook();
