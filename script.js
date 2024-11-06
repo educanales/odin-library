@@ -2,8 +2,12 @@ const got = new Book("Game of Thrones", "George R.R. Martin", 800, "Read");
 const harry = new Book("Harry Potter", "JK Rowling", 350, "Read");
 const myLibrary = [got, harry];
 
-const bookContainer = document.querySelector(".book-container");
+const dialog = document.querySelector("dialog");
 const addBtn = document.querySelector(".add-btn");
+const closeBtn = document.querySelector(".close-btn");
+const submitBtn = document.querySelector(".submit-btn");
+
+const bookContainer = document.querySelector(".book-container");
 
 function showBook() {
   myLibrary.forEach((book) => {
@@ -43,6 +47,12 @@ function addBookToLibrary(title, author, pages, status) {
   const newBook = new Book(title, author, pages, status);
   myLibrary.push(newBook);
 }
+
+addBtn.addEventListener("click", () => dialog.showModal());
+closeBtn.addEventListener("click", () => dialog.close());
+submitBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+})
 
 addBookToLibrary("El tunel", "Ernesto Sabato", 158, "Unread");
 
