@@ -19,10 +19,10 @@
       <div class="dialog-title">
         <h3>Add new book</h3>
       </div>
-      <form method="dialog">
+      <form name="book-form" method="dialog">
         <div class="form-row">
           <label for="title">Title:</label>
-          <input type="text" name="title" id="title" placeholder="Papelucho" value="">
+          <input type="text" name="title" id="title" placeholder="Papelucho">
         </div>
         <div class="form-row">
           <label for="author">Author:</label>
@@ -38,7 +38,7 @@
         </div>
         <div class="form-row btn">
           <button class="close-btn">Cancel</button>
-          <button class="submit-btn">Submit</button>
+          <button class="submit-btn" type="submit">Submit</button>
         </div>
       </form>
     </dialog>
