@@ -6,14 +6,16 @@ const dialog = document.querySelector("dialog");
 const addBtn = document.querySelector(".add-btn");
 const closeBtn = document.querySelector(".close-btn");
 const submitBtn = document.querySelector(".submit-btn");
+const form = document.forms["book-form"];
 
 const bookContainer = document.querySelector(".book-container");
 
 function showBook() {
-  myLibrary.forEach((book) => {
+  bookContainer.replaceChildren();
+  myLibrary.forEach((book) => {    
     const card = document.createElement("div");
     const textContainer = document.createElement("div");
-    textContainer.classList.add("text-container")
+    textContainer.classList.add("text-container");
     const bookTitle = document.createElement("h3");
     const bookAuthor = document.createElement("p");
     const bookPages = document.createElement("p");
@@ -43,17 +45,36 @@ function Book(title, author, pages, status) {
   this.status = status;
 }
 
-function addBookToLibrary(title, author, pages, status) {
-  const newBook = new Book(title, author, pages, status);
-  myLibrary.push(newBook);
-}
+// function addBookToLibrary(title, author, pages, status) {
+//   const newBook = new Book(title, author, pages, status);
+//   myLibrary.push(newBook);
+// }
 
 addBtn.addEventListener("click", () => dialog.showModal());
 closeBtn.addEventListener("click", () => dialog.close());
-submitBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-})
+form.addEventListener("submit", addBookToLibrary);
 
-addBookToLibrary("El tunel", "Ernesto Sabato", 158, "Unread");
+function addBookToLibrary(event) {
+  event.preventDefault();
+  
+  const checkboxStatus = document.querySelector("#status");
+  let bookStatus;
+  if (checkboxStatus.checked !== true) {
+    bookStatus = "Unread";
+  } else {
+    bookStatus = "Read";
+  };
+  const newBook = new Book(
+    title.value,
+    author.value,
+    pages.value,
+    bookStatus
+  );
+  myLibrary.push(newBook);
+  showBook();
+  dialog.close();
+}
 
 showBook();
+
+// addBookToLibrary("El tunel", "Ernesto Sabato", 158, "Unread");
