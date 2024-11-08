@@ -1,6 +1,8 @@
 const got = new Book("Game of Thrones", "George R.R. Martin", 800, "Read");
 // const harry = new Book("Harry Potter", "JK Rowling", 350, "Read");
 const myLibrary = [got];
+let newLibrary = [];
+
 
 const bookContainer = document.querySelector(".book-container");
 const dialog = document.querySelector("dialog");
@@ -29,6 +31,16 @@ function showBook() {
       deleteBook(book.id);
     });
 
+    statusBtn.addEventListener("click", () => {
+      // changeStatus(book);
+      if (book.status === "read") {
+        book.status = "Unread";
+      } else {
+          book.status = "Read" ;
+        };
+      console.log(myLibrary)
+    });
+
     bookContainer.appendChild(card);
     card.append(textContainer, btnContainer);
     textContainer.append(bookTitle, bookAuthor, bookPages, bookStatus);
@@ -37,7 +49,11 @@ function showBook() {
     bookAuthor.textContent = `Author: ${book.author}`;
     bookPages.textContent = `Pages: ${book.pages}`;
     bookStatus.textContent = `Status: ${book.status}`;
-    statusBtn.textContent = "Change status";
+    book.status === "read"
+      ? (statusBtn.textContent = "Read")
+      : (statusBtn.textContent = "Unread");
+    // statusBtn.textContent = "Change status";
+    
     deleteBtn.textContent = "Delete";
   });
 }
@@ -55,20 +71,15 @@ form.addEventListener("submit", addBookToLibrary);
 
 function addBookToLibrary(event) {
   event.preventDefault();
-  
+
   const checkboxStatus = document.querySelector("#status");
   let bookStatus;
   if (checkboxStatus.checked !== true) {
     bookStatus = "Unread";
   } else {
     bookStatus = "Read";
-  };
-  const newBook = new Book(
-    title.value,
-    author.value,
-    pages.value,
-    bookStatus
-  );
+  }
+  const newBook = new Book(title.value, author.value, pages.value, bookStatus);
   myLibrary.push(newBook);
   title.value = "";
   author.value = "";
@@ -81,6 +92,18 @@ function deleteBook(id) {
   myLibrary.splice(id, 1);
   showBook();
 }
+
+// function changeStatus(originalBook) {
+//   newLibrary = myLibrary.map(book => {
+//     if (book.id === originalBook.id) {
+//       if (originalBook.status === "read") {
+//         return { ...book, status: "Unread" };
+//       } else {
+//           return { ...book, status: "Read" };
+//         };
+//     };
+//   });
+// }
 
 showBook();
 
