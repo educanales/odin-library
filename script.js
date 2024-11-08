@@ -1,8 +1,6 @@
 const got = new Book("Game of Thrones", "George R.R. Martin", 800, "Read");
-// const harry = new Book("Harry Potter", "JK Rowling", 350, "Read");
-const myLibrary = [got];
-let newLibrary = [];
-
+const elTunel = new Book("El tunel", "Ernesto Sabato", 158, "Unread");
+const myLibrary = [got, elTunel];
 
 const bookContainer = document.querySelector(".book-container");
 const dialog = document.querySelector("dialog");
@@ -32,13 +30,11 @@ function showBook() {
     });
 
     statusBtn.addEventListener("click", () => {
-      // changeStatus(book);
-      if (book.status === "read") {
-        book.status = "Unread";
-      } else {
-          book.status = "Read" ;
-        };
-      console.log(myLibrary)
+      // changeStatus(book);      
+      book.status === "Read"
+        ? (book.status = "Unread")
+        : (book.status = "Read");
+      showBook();
     });
 
     bookContainer.appendChild(card);
@@ -49,11 +45,10 @@ function showBook() {
     bookAuthor.textContent = `Author: ${book.author}`;
     bookPages.textContent = `Pages: ${book.pages}`;
     bookStatus.textContent = `Status: ${book.status}`;
-    book.status === "read"
-      ? (statusBtn.textContent = "Read")
-      : (statusBtn.textContent = "Unread");
-    // statusBtn.textContent = "Change status";
-    
+    book.status === "Read"
+      ? (statusBtn.textContent = "Unread")
+      : (statusBtn.textContent = "Read");
+
     deleteBtn.textContent = "Delete";
   });
 }
@@ -96,7 +91,7 @@ function deleteBook(id) {
 // function changeStatus(originalBook) {
 //   newLibrary = myLibrary.map(book => {
 //     if (book.id === originalBook.id) {
-//       if (originalBook.status === "read") {
+//       if (originalBook.status === "Read") {
 //         return { ...book, status: "Unread" };
 //       } else {
 //           return { ...book, status: "Read" };
@@ -106,7 +101,3 @@ function deleteBook(id) {
 // }
 
 showBook();
-
-// console.log(myLibrary)
-
-// addBookToLibrary("El tunel", "Ernesto Sabato", 158, "Unread");
