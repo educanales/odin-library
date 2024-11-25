@@ -1,3 +1,12 @@
+class Book {
+  constructor(title, author, pages, status) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.status = status;
+  }
+}
+
 const got = new Book("Game of Thrones", "George R.R. Martin", 800, "Read");
 const elTunel = new Book("El tunel", "Ernesto Sabato", 158, "Unread");
 const myLibrary = [got, elTunel];
@@ -50,13 +59,6 @@ function showBook() {
 
     deleteBtn.textContent = "Delete";
   });
-}
-
-function Book(title, author, pages, status) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.status = status;
 }
 
 addBtn.addEventListener("click", () => dialog.showModal());
