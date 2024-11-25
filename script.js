@@ -30,7 +30,6 @@ function showBook() {
     });
 
     statusBtn.addEventListener("click", () => {
-      // changeStatus(book);      
       book.status === "Read"
         ? (book.status = "Unread")
         : (book.status = "Read");
@@ -87,17 +86,5 @@ function deleteBook(id) {
   myLibrary.splice(id, 1);
   showBook();
 }
-
-// function changeStatus(originalBook) {
-//   newLibrary = myLibrary.map(book => {
-//     if (book.id === originalBook.id) {
-//       if (originalBook.status === "Read") {
-//         return { ...book, status: "Unread" };
-//       } else {
-//           return { ...book, status: "Read" };
-//         };
-//     };
-//   });
-// }
 
 showBook();
