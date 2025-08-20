@@ -18,6 +18,62 @@ const closeBtn = document.querySelector(".close-btn");
 const submitBtn = document.querySelector(".submit-btn");
 const form = document.forms["book-form"];
 
+const titleInput = document.getElementById("title");
+const titleError = document.querySelector("#title + span.error");
+const authorInput = document.getElementById("author");
+const authorError = document.querySelector("#author + span.error");
+const pagesInput = document.getElementById("pages");
+const pagesError = document.querySelector("#pages + span.error");
+
+titleInput.addEventListener("input", (e) => {
+  if (titleInput.validity.valid) {
+    titleError.textContent = "";
+    titleError.className = "error";
+  } else {
+    showError();
+  }
+});
+
+authorInput.addEventListener("input", (e) => {
+  if (authorInput.validity.valid) {
+    authorError.textContent = "";
+    authorError.className = "error";
+  } else {
+    showError();
+  }
+});
+
+pagesInput.addEventListener("input", (e) => {
+  if (pagesInput.validity.valid) {
+    pagesError.textContent = "";
+    pagesError.className = "error";
+  } else {
+    showError();
+  }
+});
+
+form.addEventListener("submit", (e) => {
+  if (!title.validity.valid || !author.validity.valid || !pages.validity.valid) {
+    showError();
+    e.preventDefault();
+  }
+});
+
+function showError() {  
+  if (title.validity.valueMissing) {
+    titleError.textContent = "Tienes que ingresar el nombre del libro."
+    titleError.className = "error active";
+  }
+  if (author.validity.valueMissing) {
+    authorError.textContent = "Tienes que ingresar el nombre del autor."
+    authorError.className = "error active";
+  }
+  if (pages.validity.valueMissing) {
+    pagesError.textContent = "Tienes que ingresar el numero de paginas."
+    pagesError.className = "error active";
+  }
+}
+
 function showBook() {
   bookContainer.replaceChildren();
   myLibrary.forEach((book, i) => {
