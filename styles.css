@@ -168,3 +168,16 @@ input:invalid {
 input:focus:invalid {
   outline: none;
 }
+
+.error {
+  width: 100%;
+  padding: 0;
+  font-size: 80%;
+  background-color: #990000;
+  color: #ffdddd;
+  border-radius: 0 0 5px 5px;
+}
+
+.error.active {
+  padding: 0.3rem;
+}
