@@ -18,6 +18,8 @@ const closeBtn = document.querySelector(".close-btn");
 const submitBtn = document.querySelector(".submit-btn");
 const form = document.forms["book-form"];
 
+// Form Validation
+
 const titleInput = document.getElementById("title");
 const titleError = document.querySelector("#title + span.error");
 const authorInput = document.getElementById("author");
@@ -49,13 +51,6 @@ pagesInput.addEventListener("input", (e) => {
     pagesError.className = "error";
   } else {
     showError();
-  }
-});
-
-form.addEventListener("submit", (e) => {
-  if (!title.validity.valid || !author.validity.valid || !pages.validity.valid) {
-    showError();
-    e.preventDefault();
   }
 });
 
@@ -119,7 +114,15 @@ function showBook() {
 
 addBtn.addEventListener("click", () => dialog.showModal());
 closeBtn.addEventListener("click", () => dialog.close());
-form.addEventListener("submit", addBookToLibrary);
+
+form.addEventListener("submit", (e) => {
+  if (!title.validity.valid || !author.validity.valid || !pages.validity.valid) {
+    showError();
+    e.preventDefault();
+  } else {
+    addBookToLibrary(e);
+  }
+});
 
 function addBookToLibrary(event) {
   event.preventDefault();
